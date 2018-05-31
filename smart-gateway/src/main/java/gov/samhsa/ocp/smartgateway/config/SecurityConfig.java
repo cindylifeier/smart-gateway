@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @Configuration
 public class SecurityConfig {
 
-    private static final String RESOURCE_ID = "smart-gateway";
+    private static final String RESOURCE_ID = "ocpSmart";
 
     @Bean
     public ResourceServerConfigurer resourceServer(SecurityProperties securityProperties) {
@@ -32,6 +32,7 @@ public class SecurityConfig {
                         .antMatchers(HttpMethod.GET, "/launcher").permitAll()
                         .antMatchers(HttpMethod.POST, "/token").permitAll()
                         .antMatchers(HttpMethod.GET, "/launch").denyAll()
+                        .antMatchers(HttpMethod.GET, "/clients").permitAll()
                         .anyRequest().denyAll();
             }
         };
