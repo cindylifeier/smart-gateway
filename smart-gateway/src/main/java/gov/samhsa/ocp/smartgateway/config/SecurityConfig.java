@@ -34,7 +34,7 @@ public class SecurityConfig {
                         .antMatchers(HttpMethod.GET, "/launch").denyAll()
                         .antMatchers(HttpMethod.GET, "/clients/meta").permitAll()
                         .antMatchers(HttpMethod.GET, "/clients").access("#oauth2.hasScopeMatching('ocpSmart.client_read')")
-                        .antMatchers(HttpMethod.POST, "/clients").access("#oauth2.hasScopeMatching('ocpSmart.client_write')")
+                        .antMatchers(HttpMethod.POST, "/clients").access("#oauth2.hasScopeMatching('ocpSmart.client_create')")
                         .antMatchers(HttpMethod.PUT, "/clients/**").access("#oauth2.hasScopeMatching('ocpSmart.client_update')")
                         .antMatchers(HttpMethod.DELETE, "/clients/**").access("#oauth2.hasScopeMatching('ocpSmart.client_delete')")
                         .anyRequest().denyAll();
