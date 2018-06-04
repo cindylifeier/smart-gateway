@@ -32,7 +32,11 @@ public class SecurityConfig {
                         .antMatchers(HttpMethod.GET, "/launcher").permitAll()
                         .antMatchers(HttpMethod.POST, "/token").permitAll()
                         .antMatchers(HttpMethod.GET, "/launch").denyAll()
-                        .antMatchers(HttpMethod.GET, "/clients").permitAll()
+                        .antMatchers(HttpMethod.GET, "/clients/meta").permitAll()
+                        .antMatchers(HttpMethod.GET, "/clients").access("#oauth2.hasScopeMatching('ocpSmart.client_read')")
+                        .antMatchers(HttpMethod.POST, "/clients").access("#oauth2.hasScopeMatching('ocpSmart.client_write')")
+                        .antMatchers(HttpMethod.PUT, "/clients/**").access("#oauth2.hasScopeMatching('ocpSmart.client_update')")
+                        .antMatchers(HttpMethod.DELETE, "/clients/**").access("#oauth2.hasScopeMatching('ocpSmart.client_delete')")
                         .anyRequest().denyAll();
             }
         };
