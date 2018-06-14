@@ -30,6 +30,7 @@ public class SecurityConfig {
                 http.authorizeRequests()
                         .antMatchers(HttpMethod.GET, "/authorize").permitAll()
                         .antMatchers(HttpMethod.GET, "/launcher").permitAll()
+                        .antMatchers(HttpMethod.OPTIONS, "/token").permitAll()
                         .antMatchers(HttpMethod.POST, "/token").permitAll()
                         .antMatchers(HttpMethod.GET, "/launch").denyAll()
                         .antMatchers(HttpMethod.GET, "/clients/meta").permitAll()
